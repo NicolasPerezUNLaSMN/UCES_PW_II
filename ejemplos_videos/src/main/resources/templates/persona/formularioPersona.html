@@ -1,0 +1,8 @@
+<form action="#" th:action="@{nuevapersona}" th:object="${persona}" method="post">
+	<p> NOMBRE: <input type="text" th:field="*{nombre}" /></p>
+	<p> EDAD: <input type="text" th:field="*{edad}" /></p>
+	
+	<p> PESO: <input type="text" th:field="*{peso}" /></p>
+	
+	<input type="submit"/>
+</form>

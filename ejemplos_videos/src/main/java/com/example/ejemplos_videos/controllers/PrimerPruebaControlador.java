@@ -18,7 +18,7 @@ public class PrimerPruebaControlador {
 	@GetMapping("/nombre") //?nombre_variable=Nico
 	public ModelAndView cambiarNombreNuevo(@RequestParam(name="nombre_variable", required=true, defaultValue="null") String nombre ){
 		
-		ModelAndView modelV = new ModelAndView(ViewRouteHelper.INDEX2);
+		ModelAndView modelV = new ModelAndView(ViewRouteHelper.INDEX);
 		
 		modelV.addObject("variableParaTemplate", nombre);
 		
@@ -30,7 +30,7 @@ public class PrimerPruebaControlador {
 	@GetMapping("/nombre/{nombre_variable}")
 	public ModelAndView cambiarNombre(@PathVariable("nombre_variable")String nombre_variable) {
 			
-			ModelAndView modelV = new ModelAndView(ViewRouteHelper.INDEX2);
+			ModelAndView modelV = new ModelAndView(ViewRouteHelper.INDEX);
 			
 			modelV.addObject("variableParaTemplate", nombre_variable);
 			
