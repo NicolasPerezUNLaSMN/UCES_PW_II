@@ -1,8 +1,13 @@
+
+
 <form action="#" th:action="@{nuevapersona}" th:object="${persona}" method="post">
 	<p> NOMBRE: <input type="text" th:field="*{nombre}" /></p>
+	<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> Peso ERROR</p>
 	<p> EDAD: <input type="text" th:field="*{edad}" /></p>
+	<p th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"> Edad ERROR</p>
 	
 	<p> PESO: <input type="text" th:field="*{peso}" /></p>
+	<p th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}"> Peso ERROR</p>
 	
 	<input type="submit"/>
 </form>

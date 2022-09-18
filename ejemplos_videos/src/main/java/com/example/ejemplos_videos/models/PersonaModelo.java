@@ -1,16 +1,27 @@
 package com.example.ejemplos_videos.models;
 
-public class Persona {
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
+public class PersonaModelo {
 	
+	@Size(min=4, max =12)
 	private String nombre;
+	
+	@Min(0)
 	private int edad;
+	
+	
+	@Min(4)
+	@Max(300)
 	private float peso;
 	
-	public Persona() 
+	public PersonaModelo() 
 	{}
 	
 	
-	public Persona(String nombre, int edad, float peso) {
+	public PersonaModelo(String nombre, int edad, float peso) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
