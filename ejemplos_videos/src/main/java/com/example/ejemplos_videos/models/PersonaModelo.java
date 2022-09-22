@@ -6,6 +6,9 @@ import javax.validation.constraints.Size;
 
 public class PersonaModelo {
 	
+	
+	private int id;
+	
 	@Size(min=4, max =12)
 	private String nombre;
 	
@@ -17,6 +20,11 @@ public class PersonaModelo {
 	@Max(300)
 	private float peso;
 	
+	@Size(min=4, max =40)
+	private String pais;
+	
+	
+	
 	public PersonaModelo() 
 	{}
 	
@@ -26,6 +34,28 @@ public class PersonaModelo {
 		this.nombre = nombre;
 		this.edad = edad;
 		this.peso = peso;
+	}
+
+	
+	
+	
+	public PersonaModelo(@Size(min = 4, max = 12) String nombre, @Min(0) int edad, @Min(4) @Max(300) float peso,
+			@Size(min = 4, max = 40) String pais) {
+		super();
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+	}
+
+
+	public String getPais() {
+		return pais;
+	}
+
+
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
 
@@ -53,6 +83,29 @@ public class PersonaModelo {
 	public void setPeso(float peso) {
 		this.peso = peso;
 	}
+
+
+	public PersonaModelo(int id, @Size(min = 4, max = 12) String nombre, @Min(0) int edad, @Min(4) @Max(300) float peso,
+			@Size(min = 4, max = 40) String pais) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	
 	
 	
