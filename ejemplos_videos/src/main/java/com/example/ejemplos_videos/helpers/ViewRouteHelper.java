@@ -12,4 +12,9 @@ public class ViewRouteHelper {
 	public final static String PERSONA_FORM = "persona/formularioPersona";
 	public final static String PERSONA_NEW = "persona/nuevoPersona";
 
+	//USER
+	public final static String USER_LOGIN = "user/login";
+	public final static String USER_LOGOUT = "user/logout";
+	
+	
 }
