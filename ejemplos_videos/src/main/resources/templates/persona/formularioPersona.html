@@ -1,5 +1,8 @@
 
 
+
+<p> Bienvenido--->!!!! <span th:text="${usuario}" />
+
 <form action="#" th:action="@{nuevapersona}" th:object="${persona}" method="post">
 	<p> NOMBRE: <input type="text" th:field="*{nombre}" /></p>
 	<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> </p>

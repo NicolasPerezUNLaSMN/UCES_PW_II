@@ -4,6 +4,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,11 +29,17 @@ public class PersonaControlador {
 	@Qualifier("personaService")
 	private IPersonaService personaService;
 	
-	
+	@PreAuthorize("hasRole('ROLE_1')")
 	@GetMapping("/crearPersona")
-	public String crearPersona(Model model) {	
+	public ModelAndView  crearPersona(Model model) {	
 		model.addAttribute("persona", new PersonaModelo());
-		return ViewRouteHelper.PERSONA_FORM;	
+		
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.PERSONA_FORM);
+		modelAndView.addObject("usuario", user.getUsername());
+		
+		return modelAndView;	
 	}
 	
 	
