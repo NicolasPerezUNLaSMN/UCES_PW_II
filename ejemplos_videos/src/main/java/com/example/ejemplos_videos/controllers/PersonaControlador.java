@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.ejemplos_videos.entities.Persona;
 import com.example.ejemplos_videos.helpers.ViewRouteHelper;
 import com.example.ejemplos_videos.models.PersonaModelo;
+import com.example.ejemplos_videos.services.IAvatarService;
 import com.example.ejemplos_videos.services.IPersonaService;
 
 @Controller
@@ -29,10 +31,17 @@ public class PersonaControlador {
 	@Qualifier("personaService")
 	private IPersonaService personaService;
 	
+	@Autowired
+	@Qualifier("avatarService")
+	private IAvatarService avatarService;
+	
 	@PreAuthorize("hasRole('ROLE_1')")
 	@GetMapping("/crearPersona")
 	public ModelAndView  crearPersona(Model model) {	
 		model.addAttribute("persona", new PersonaModelo());
+		
+		
+		
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
@@ -52,6 +61,9 @@ public class PersonaControlador {
 			mV.setViewName(ViewRouteHelper.PERSONA_FORM);
 			
 		}else {
+			
+		
+			//Modificamos el insertar de la persona para que se inserte el avatar tambien...
 			personaService.insertOrUpdate(persona); 
 			
 			mV.setViewName(ViewRouteHelper.PERSONA_NEW);
@@ -59,6 +71,8 @@ public class PersonaControlador {
 			
 			//Podríamos tambien agregarle las personas que tenemos en la BD
 			mV.addObject("listaPersonas",personaService.getAll());
+			
+			
 
 		}
 			

@@ -33,6 +33,8 @@ public class PersonaService implements IPersonaService {
 	@Override
 	public PersonaModelo insertOrUpdate(PersonaModelo personaModelo) {
 		
+	
+		
 		Persona persona = personaRepository.save(personaConverter.modelToEntity(personaModelo));
 		
 		return personaConverter.entityToModel(persona);

@@ -2,13 +2,15 @@ package com.example.ejemplos_videos.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -44,6 +46,12 @@ public class Persona {
 	@Column(name="actualizado")
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
+	
+	//Se podria agregar @NotNull si se queire que la relación exista siempre
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "avatar_id", referencedColumnName = "id")
+	private Avatar avatar;
+	
 
 	public Persona(int id, String nombre, int edad, float peso, String pais) {
 		super();
@@ -116,6 +124,30 @@ public class Persona {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+
+
+	public Persona(int id, String nombre, int edad, float peso, String pais, Avatar avatar) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+		this.avatar = avatar;
+	}
+
+
+
+	public Avatar getAvatar() {
+		return avatar;
+	}
+
+
+
+	public void setAvatar(Avatar avatar) {
+		this.avatar = avatar;
 	}
 	
 	

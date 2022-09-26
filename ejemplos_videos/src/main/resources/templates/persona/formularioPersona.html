@@ -15,5 +15,12 @@
 	<p> PAIS: <input type="text" th:field="*{pais}" /></p>
 	<p th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"> </p>
 	
+	
+	<!--  AGREGO LOS DATOS DEL AVATAR -->
+	<p> E-Mail: <input type="text" th:field="*{avatar.email}" /></p>
+	
+	
+	<p> Web: <input type="text" th:field="*{avatar.webPersonal}" /></p>
+	
 	<input type="submit"/>
 </form>

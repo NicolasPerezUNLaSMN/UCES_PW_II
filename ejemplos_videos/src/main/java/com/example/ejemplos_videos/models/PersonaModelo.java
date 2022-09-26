@@ -24,6 +24,10 @@ public class PersonaModelo {
 	private String pais;
 	
 	
+	private AvatarModelo avatar;
+	
+	
+	
 	
 	public PersonaModelo() 
 	{}
@@ -104,6 +108,29 @@ public class PersonaModelo {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
+	public AvatarModelo getAvatar() {
+		return avatar;
+	}
+
+
+	public void setAvatar(AvatarModelo avatar) {
+		this.avatar = avatar;
+	}
+
+
+	public PersonaModelo(int id, @Size(min = 4, max = 12) String nombre, @Min(0) int edad, @Min(4) @Max(300) float peso,
+			@Size(min = 4, max = 40) String pais, AvatarModelo avatar) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+		this.avatar = avatar;
+	}
+	
 	
 	
 	
