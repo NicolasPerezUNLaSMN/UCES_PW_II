@@ -1,0 +1,2 @@
+INSERT INTO `user` (`id`,`enabled`,`password`,`username`) VALUES (1,b'1',"$2a$10$GXxom1zEvTD4PsqziRPD..5vdwWYZyqT5BvUCQWEHWGNERlVZ9KKe","Nykolai");
+INSERT INTO `user_role` (`id`,`role`,`user_id`) VALUES(1,"ROLE_1","1");

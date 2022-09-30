@@ -2,6 +2,10 @@ package com.example.ejemplos_videos.entities;
 
 import java.time.LocalDateTime;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,13 +14,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.EqualsAndHashCode;
+
+
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name="persona")
 public class Persona {
 
@@ -52,6 +63,22 @@ public class Persona {
     @JoinColumn(name = "avatar_id", referencedColumnName = "id")
 	private Avatar avatar;
 	
+	
+	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Figurita> figuritas;
+	
+	
+	 @ManyToMany(cascade = {
+	            CascadeType.PERSIST,
+	            CascadeType.MERGE
+	  })
+	    @JoinTable(name = "persona_pais",
+	            joinColumns = @JoinColumn(name = "persona_id"),
+	            inverseJoinColumns = @JoinColumn(name = "pais_id")
+	  )
+	private Set<Pais> paises = new HashSet<>();
+	 
+
 
 	public Persona(int id, String nombre, int edad, float peso, String pais) {
 		super();
@@ -149,6 +176,88 @@ public class Persona {
 	public void setAvatar(Avatar avatar) {
 		this.avatar = avatar;
 	}
+
+
+
+	public List<Figurita> getFiguritas() {
+		return figuritas;
+	}
+
+
+
+	public void setFiguritas(List<Figurita> figuritas) {
+		this.figuritas = figuritas;
+	}
+
+
+
+	public Persona(int id, String nombre, int edad, float peso, String pais, LocalDateTime createdAt,
+			LocalDateTime updatedAt, Avatar avatar, List<Figurita> figuritas) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.avatar = avatar;
+		this.figuritas = figuritas;
+	}
+	
+	
+	
+
+	public Persona(int id, String nombre, int edad, float peso, String pais, LocalDateTime createdAt,
+			LocalDateTime updatedAt, Avatar avatar) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.avatar = avatar;
+	
+	}
+
+
+
+	public Set<Pais> getPaises() {
+		return paises;
+	}
+
+
+
+	public void setPaises(Set<Pais> paises) {
+		this.paises = paises;
+	}
+
+
+
+	public Persona(int id, String nombre, int edad, float peso, String pais, LocalDateTime createdAt,
+			LocalDateTime updatedAt, Avatar avatar, List<Figurita> figuritas,Set<Pais> paises) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.avatar = avatar;
+		this.figuritas = figuritas;
+		this.paises = paises;
+	}
+
+
+
+	
+
+
+
+	
 	
 	
 	
