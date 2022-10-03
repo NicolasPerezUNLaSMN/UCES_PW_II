@@ -23,6 +23,7 @@
 		<th>Pais</th>
 		<th>E-mail</th>
 		<th>Web</th>
+		<th>Imagen</th>
 	</tr>
 	
 	<tr th:each="p : ${listaPersonas}">
@@ -32,6 +33,16 @@
 		<td th:text="${p.pais}"></td>
 		<td th:text="${p.avatar.email}"></td>
 		<td th:text="${p.avatar.webPersonal}"></td>
+		<td>
+			<img
+				th:alt="${persona.avatar.imagen}"
+				th:src="@{'/images/' + ${p.avatar.imagen}}"
+				style="max-width:15%"
+			
+			>
+		</td>
+		
+		
 	</tr>
 	
 </table>

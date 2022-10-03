@@ -1,5 +1,6 @@
 package com.example.ejemplos_videos.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,36 @@ public class PersonaService implements IPersonaService {
 	
 	@Override
 	public List<Persona> getAll(){	
+			
+			
 		return personaRepository.findAll();	
 	}
 	
+	
+	public PersonaModelo traerPorId(int id) {
+		
+		
+		return personaConverter.entityToModel(personaRepository.findById(id));
+		
+	};
+	
+	
+	
+	
+	public List<PersonaModelo> getAllModel(){
+		
+		List<PersonaModelo> listaDePersonas = new ArrayList<PersonaModelo>();
+		
+		for (Persona p:getAll() ) {
+			
+			listaDePersonas.add(personaConverter.entityToModel(p));
+			
+			
+		}
+	
+		
+		return listaDePersonas;
+	}
 	
 	@Override
 	public PersonaModelo insertOrUpdate(PersonaModelo personaModelo) {

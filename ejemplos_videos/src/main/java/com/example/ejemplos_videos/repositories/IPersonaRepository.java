@@ -17,6 +17,8 @@ public interface IPersonaRepository extends
 	//con esos nombres deberas programarlo personalmente
 	public abstract Persona findByNombre(String nombre);
 	
+	public abstract Persona findById(int id);
+	
 	
 	public abstract Persona findByPaisAndEdad(String pais, int edad);
 	

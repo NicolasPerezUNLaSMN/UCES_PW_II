@@ -15,6 +15,9 @@ public class AvatarModelo {
 	@Size(min=5, max =40)
 	private String webPersonal;
 	
+	
+	private String imagen;
+	
 	private PersonaModelo persona;
 	
 	
@@ -66,7 +69,37 @@ public class AvatarModelo {
 		this.webPersonal = webPersonal;
 		this.persona = persona;
 	}
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	public AvatarModelo(int id, @Email @Size(min = 10, max = 20) String email,
+			@Size(min = 5, max = 40) String webPersonal, String imagen, PersonaModelo persona) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.webPersonal = webPersonal;
+		this.imagen = imagen;
+		this.persona = persona;
+	}
 	
+	
+	public AvatarModelo(int id, @Email @Size(min = 10, max = 20) String email,
+			@Size(min = 5, max = 40) String webPersonal, String imagen) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.webPersonal = webPersonal;
+		this.imagen = imagen;
+		
+	}
+	@Override
+	public String toString() {
+		return "AvatarModelo [id=" + id + ", email=" + email + ", webPersonal=" + webPersonal + ", imagen=" + imagen
+				+ ", persona=" + persona + "]";
+	}
 	
 	
 

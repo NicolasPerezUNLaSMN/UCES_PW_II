@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.ejemplos_videos.helpers.ViewRouteHelper;
 
 @Controller
-@RequestMapping("/primerprueba")
+@RequestMapping("/index")
 public class PrimerPruebaControlador {
 	
 	

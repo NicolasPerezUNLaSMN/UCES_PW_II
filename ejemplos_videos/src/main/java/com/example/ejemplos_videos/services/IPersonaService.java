@@ -13,6 +13,10 @@ public interface IPersonaService {
 	public PersonaModelo insertOrUpdate(PersonaModelo personaModelo);
 	
 	public boolean remove(int id);
+	
+	public PersonaModelo traerPorId(int id);
+	
+	public List<PersonaModelo> getAllModel();
 
 }
 

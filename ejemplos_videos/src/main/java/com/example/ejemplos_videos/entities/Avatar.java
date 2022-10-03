@@ -19,6 +19,10 @@ public class Avatar {
 	
 	private String webPersonal;
 	
+	
+	private String imagen;
+	
+	
 	//Relación no propietaria
 	@OneToOne(mappedBy = "avatar")
 	private Persona persona;
@@ -54,9 +58,42 @@ public class Avatar {
 	}
 	@Override
 	public String toString() {
-		return "Avatar [id=" + id + ", email=" + email + ", webPersonal=" + webPersonal + ", persona=" + persona + "]";
+		return "Avatar [id=" + id + ", email=" + email + ", webPersonal=" + webPersonal + ", imagen=" + imagen
+				+ ", persona=" + persona + "]";
+	}
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	public Persona getPersona() {
+		return persona;
+	}
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+	public Avatar(int id, String email, String webPersonal, String imagen, Persona persona) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.webPersonal = webPersonal;
+		this.imagen = imagen;
+		this.persona = persona;
 	}
 	
 	
+	public Avatar(int id, String email, String webPersonal, String imagen) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.webPersonal = webPersonal;
+		this.imagen = imagen;
+		
+	}
+	
 
+	
+	
+	
 }

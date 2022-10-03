@@ -67,7 +67,7 @@ Persona "1" --o "1..*" Figurita: oneToMany
 
 User "1" -- "1..*" User_Role: oneToMany 
 
-Persona "*..1" -- "1..*" Pais: ManyToMany 
+Persona "1..*" -- "1..*" Pais: ManyToMany 
 
 
 

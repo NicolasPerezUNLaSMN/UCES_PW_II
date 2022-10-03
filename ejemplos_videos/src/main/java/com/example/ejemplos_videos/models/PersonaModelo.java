@@ -65,7 +65,8 @@ public class PersonaModelo {
 
 	@Override
 	public String toString() {
-		return "Persona [nombre=" + nombre + ", edad=" + edad + ", peso=" + peso + "]";
+		return "PersonaModelo [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", peso=" + peso + ", pais=" + pais
+				+ ", avatar=" + avatar + "]";
 	}
 
 

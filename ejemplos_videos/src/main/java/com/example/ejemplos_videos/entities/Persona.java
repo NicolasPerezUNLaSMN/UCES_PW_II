@@ -64,7 +64,7 @@ public class Persona {
 	private Avatar avatar;
 	
 	
-	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
 	private List<Figurita> figuritas;
 	
 	
@@ -249,6 +249,15 @@ public class Persona {
 		this.avatar = avatar;
 		this.figuritas = figuritas;
 		this.paises = paises;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Persona [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", peso=" + peso + ", pais=" + pais
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", avatar=" + avatar + ", figuritas="
+				+ figuritas + ", paises=" + paises + "]";
 	}
 
 
