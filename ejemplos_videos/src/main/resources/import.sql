@@ -1,10 +1,12 @@
 INSERT INTO `user` (`id`,`enabled`,`password`,`username`) VALUES (1,b'1',"$2a$10$GXxom1zEvTD4PsqziRPD..5vdwWYZyqT5BvUCQWEHWGNERlVZ9KKe","Nykolai");
 INSERT INTO `user_role` (`id`,`role`,`user_id`) VALUES(1,"ROLE_1","1");
+INSERT INTO `user` (`id`,`enabled`,`password`,`username`) VALUES (2,b'1',"$2a$10$GXxom1zEvTD4PsqziRPD..5vdwWYZyqT5BvUCQWEHWGNERlVZ9KKe","Nykolai2");
+INSERT INTO `user_role` (`id`,`role`,`user_id`) VALUES(2,"ROLE_USER","2");
 
 
 
 
-INSERT INTO `avatar` VALUES (1,'brenda@hotmail.com','www.brenda.com','Captura de pantalla (1).png'),(2,'nico@gmail.com','www.nico.com','Captura de pantalla (1).png');
+INSERT INTO `avatar` VALUES (1,'brenda@hotmail.com','Captura de pantalla (1).png','www.brenda.com'),(2,'nico@gmail.com','Captura de pantalla (1).png','www.nico.com');
 INSERT INTO `persona` VALUES (1,'2022-10-02 20:30:56.037030',33,'Brenda','Honduras',71,'2022-10-02 20:30:56.037030',1),(2,'2022-10-02 20:34:47.578370',32,'Nicolas','Argentina',68,'2022-10-02 20:34:47.578370',2);
 
 

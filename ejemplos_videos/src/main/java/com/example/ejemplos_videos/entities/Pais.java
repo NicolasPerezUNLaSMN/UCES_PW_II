@@ -84,6 +84,14 @@ public class Pais {
 		this.ranking = ranking;
 		this.persona = persona;
 	}
+	
+	public Pais(int id, String nombre, int ranking) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.ranking = ranking;
+		this.persona =  new HashSet<>();
+	}
 
 	public Set<Persona> getPersona() {
 		return persona;

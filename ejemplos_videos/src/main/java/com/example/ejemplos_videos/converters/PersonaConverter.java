@@ -15,10 +15,39 @@ public class PersonaConverter {
 	@Qualifier("avatarConverter")
 	private AvatarConverter avatarConverter;
 	
-	public PersonaModelo entityToModel(Persona persona) {
+	@Autowired
+	@Qualifier("paisConverter")
+	private PaisConverter paisConverter;
+	
+	public PersonaModelo entityToModelSet(Persona persona) {
 		
 		
 	
+		return new PersonaModelo(persona.getId(), persona.getNombre(), persona.getEdad(), persona.getPeso(), 
+				persona.getPais(), 	avatarConverter.entityToModel(persona.getAvatar()), paisConverter.entidadAModeloSet(persona.getPaises()));
+		
+		
+	}
+	
+	
+	
+	public Persona modelToEntitySet(PersonaModelo personaModelo) {
+		
+	
+		return new Persona(personaModelo.getId(), personaModelo.getNombre(), personaModelo.getEdad(),
+				personaModelo.getPeso(), personaModelo.getPais(), 	avatarConverter.modelToEntity(personaModelo.getAvatar()), 
+				paisConverter.modeloAEntidadSet(personaModelo.getPaises()));
+		
+		
+	}
+	
+	
+	
+	
+	public PersonaModelo entityToModel(Persona persona) {
+		
+		
+		
 		return new PersonaModelo(persona.getId(), persona.getNombre(), persona.getEdad(), persona.getPeso(), 
 				persona.getPais(), 	avatarConverter.entityToModel(persona.getAvatar()));
 		
@@ -35,5 +64,8 @@ public class PersonaConverter {
 		
 		
 	}
+	
+	
+	
 
 }

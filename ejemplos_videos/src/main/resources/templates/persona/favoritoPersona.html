@@ -37,75 +37,54 @@
         </nav>
         <!-- Page Content-->
         <div class="container-fluid p-0">
-         	<div class="card" style="width: 100%;">
+        
+        
+		        <div class="card" style="width: 100%;">
 		 
 					  <div class="card-body">
-					    <h5 class="card-title">Datos Persona</h5>
-					
-					  
-        
-        <form action="#" th:action="@{/personas/nuevapersona}" th:object="${persona}" method="post"
-		 enctype="multipart/form-data">
-		 	
-		 
-		 	
-		 	
-		 	<input type="hidden" th:field="*{id}" />
-		 	
-		 	<div class="mb-3">
-    		<label for="nombre" class="form-label">Nombre</label>
-			<p> NOMBRE: <input type="text" class="form-control"  th:field="*{nombre}" /></p>
-			<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> </p>
-			</div>
-			
-			<div class="mb-3">
-    		<label for="edad" class="form-label">Edad</label>
-			<p> EDAD: <input type="text" class="form-control" th:field="*{edad}" /></p>
-			<p th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"> </p>
-			</div>
-			
-			<div class="mb-3">
-    		<label for="peso" class="form-label">Peso</label>
-			<p> PESO: <input type="text" class="form-control"  th:field="*{peso}" /></p>
-			<p th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}"></p>
-			</div>
-			
-			<div class="mb-3">
-    		<label for="pais" class="form-label">Pais</label>
-			<p> PAIS: <input type="text" class="form-control" th:field="*{pais}" /></p>
-			<p th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"> </p>
-			</div>
-			
-			
-			<!--  AGREGO LOS DATOS DEL AVATAR -->
-			<input type="hidden" th:field="*{avatar.id}" />
-			
-			<div class="mb-3">
-    		<label for="e-mail" class="form-label">E-mail</label>
-			<p> E-Mail: <input type="email" class="form-control" th:field="*{avatar.email}" /></p>
-			</div>
-			
-			<div class="mb-3">
-    		<label for="webPersonal" class="form-label">Web Personal</label>
-			<p> Web: <input type="text" class="form-control" th:field="*{avatar.webPersonal}" /></p>
-			</div>
-			
-				<div class="mb-3">
-    		<label for="nombre" class="form-label">Nombre</label>
-			<p> Imagen: <input class="form-control"  type="file" name="file"  id="imagen"/></p>
-			</div>
-			
+					    <h5 class="card-title">Persona</h5>
+					    <p class="card-text">Agregar pais favorito de:</p>
+					    
+					    <p class="card-text"> NOMBRE: <span th:text="${persona.nombre}" /></span>
+						<p class="card-text"> EDAD: <span th:text="${persona.edad}" /></span>
+						<p class="card-text"> PESO: <span th:text="${persona.peso}" /></span>
+						<p class="card-text"> PAIS: <span th:text="${persona.pais}" /></span>
+						<p class="card-text"> E-MAIL: <span th:text="${persona.avatar.email}" /></span>
+						<p class="card-text"> WEB: <span th:text="${persona.avatar.webPersonal}" /></span>
+						
+						
+						<div th:each="p : ${paises}">
+											
+						
+						    <div class="form-check form-check-inline">
+						      <a th:text="${p.nombre}"  th:href="@{/personas/agregar/} +${persona.id} +@{/} +${p.id}" >
+								  
+							  </a>
+							</div>
+							
+						</div>
 		
-			
-			<button type="submit" class="btn btn-primary">+Agregar</button>
-			
-		</form>
-		 
-		 		  </div>
+					    
+					    
+										
+											
+										
+					   
+					  </div>
 				</div>
     
-        	     
-       
+        	
+        	
+        	
+        
+        	
+     
+        	
+
+
+			
+			
+			       
           
             <!-- Awards
             <section class="resume-section" id="awards">

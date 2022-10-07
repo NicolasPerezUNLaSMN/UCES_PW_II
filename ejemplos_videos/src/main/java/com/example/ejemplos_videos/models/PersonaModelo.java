@@ -1,8 +1,13 @@
 package com.example.ejemplos_videos.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+
+import com.example.ejemplos_videos.entities.Pais;
 
 public class PersonaModelo {
 	
@@ -26,8 +31,9 @@ public class PersonaModelo {
 	
 	private AvatarModelo avatar;
 	
+
 	
-	
+	private Set<PaisModelo> paises = new HashSet<>();
 	
 	public PersonaModelo() 
 	{}
@@ -89,6 +95,21 @@ public class PersonaModelo {
 		this.peso = peso;
 	}
 
+	
+	
+
+	public PersonaModelo(int id, @Size(min = 4, max = 12) String nombre, @Min(0) int edad, @Min(4) @Max(300) float peso,
+			@Size(min = 4, max = 40) String pais, AvatarModelo avatar, Set<PaisModelo> paises) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+		this.avatar = avatar;
+		this.paises = paises;
+	}
+
 
 	public PersonaModelo(int id, @Size(min = 4, max = 12) String nombre, @Min(0) int edad, @Min(4) @Max(300) float peso,
 			@Size(min = 4, max = 40) String pais) {
@@ -130,6 +151,19 @@ public class PersonaModelo {
 		this.peso = peso;
 		this.pais = pais;
 		this.avatar = avatar;
+	}
+
+
+
+
+
+	public Set<PaisModelo> getPaises() {
+		return paises;
+	}
+
+
+	public void setPaises(Set<PaisModelo> paises) {
+		this.paises = paises;
 	}
 	
 	

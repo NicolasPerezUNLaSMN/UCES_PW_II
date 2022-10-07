@@ -65,7 +65,7 @@ public class Persona {
 	
 	
 	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
-	private List<Figurita> figuritas;
+	private Set<Figurita> figuritas = new HashSet<>();;
 	
 	
 	 @ManyToMany(cascade = {
@@ -179,32 +179,9 @@ public class Persona {
 
 
 
-	public List<Figurita> getFiguritas() {
-		return figuritas;
-	}
 
 
 
-	public void setFiguritas(List<Figurita> figuritas) {
-		this.figuritas = figuritas;
-	}
-
-
-
-	public Persona(int id, String nombre, int edad, float peso, String pais, LocalDateTime createdAt,
-			LocalDateTime updatedAt, Avatar avatar, List<Figurita> figuritas) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.edad = edad;
-		this.peso = peso;
-		this.pais = pais;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-		this.avatar = avatar;
-		this.figuritas = figuritas;
-	}
-	
 	
 	
 
@@ -237,7 +214,7 @@ public class Persona {
 
 
 	public Persona(int id, String nombre, int edad, float peso, String pais, LocalDateTime createdAt,
-			LocalDateTime updatedAt, Avatar avatar, List<Figurita> figuritas,Set<Pais> paises) {
+			LocalDateTime updatedAt, Avatar avatar, Set<Figurita> figuritas,Set<Pais> paises) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -248,6 +225,36 @@ public class Persona {
 		this.updatedAt = updatedAt;
 		this.avatar = avatar;
 		this.figuritas = figuritas;
+		this.paises = paises;
+	}
+	
+	
+	public Persona(int id, String nombre, int edad, float peso, String pais, LocalDateTime createdAt,
+			LocalDateTime updatedAt, Avatar avatar, Set<Pais> paises) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.avatar = avatar;
+	
+		this.paises = paises;
+	}
+	
+	
+	public Persona(int id, String nombre, int edad, float peso, String pais,  Avatar avatar, Set<Pais> paises) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.pais = pais;
+	
+		this.avatar = avatar;
+	
 		this.paises = paises;
 	}
 
@@ -262,6 +269,18 @@ public class Persona {
 
 
 
+	public Set<Figurita> getFiguritas() {
+		return figuritas;
+	}
+
+
+
+	public void setFiguritas(Set<Figurita> figuritas) {
+		this.figuritas = figuritas;
+	}
+
+
+	
 	
 
 
