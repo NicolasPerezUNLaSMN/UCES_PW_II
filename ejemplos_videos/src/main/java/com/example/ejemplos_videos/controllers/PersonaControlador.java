@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.ejemplos_videos.converters.PaisConverter;
 import com.example.ejemplos_videos.entities.Figurita;
 import com.example.ejemplos_videos.entities.Pais;
 import com.example.ejemplos_videos.entities.Persona;
@@ -53,6 +54,11 @@ public class PersonaControlador {
 	@Autowired
 	@Qualifier("avatarService")
 	private IAvatarService avatarService;
+	
+	
+	@Autowired
+	@Qualifier("paisConverter")
+	private PaisConverter paisConverter;
 	
 	//@PreAuthorize("hasRole('ROLE_1')")
 	@GetMapping("/crearPersona")
@@ -144,6 +150,20 @@ public class PersonaControlador {
 	
 		
 		PersonaModelo persona = personaService.traerPorId(id);
+		
+		//Agrego a la lista los paises que ya tenia, esto se puede hacer (MEJOR Aún
+		//en service persona, crear un metodo que me retorne a la personaModelo pero con sus paises
+		//Traigo sus relaciones
+		Set<Pais> paises = personaService.paisesDeLaPersona(id);
+		
+		if(paises != null) {
+			for (Pais p : paises) {
+				
+				persona.getPaises().add(paisService.traerPorId(p.getId()));
+				
+			}
+		}
+		
 		
 		PaisModelo pais = paisService.traerPorId(idEquipo);
 		
