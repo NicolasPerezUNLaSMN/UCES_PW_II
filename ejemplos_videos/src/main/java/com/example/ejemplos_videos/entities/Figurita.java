@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name="figurita")
@@ -30,6 +32,7 @@ public class Figurita {
 	
 	@ManyToOne
 	@JoinColumn(name = "persona_id")
+	@JsonBackReference
 	private Persona persona;
 	
 	
@@ -108,6 +111,11 @@ public class Figurita {
 		this.numero = numero;
 		this.descripcion = descripcion;
 	
+	}
+
+	@Override
+	public String toString() {
+		return "Figurita [id=" + id + ", numero=" + numero + ", descripcion=" + descripcion + "]";
 	}
 	
 	

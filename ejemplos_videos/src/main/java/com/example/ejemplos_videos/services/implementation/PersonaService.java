@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.example.ejemplos_videos.converters.PersonaConverter;
+import com.example.ejemplos_videos.entities.Avatar;
 import com.example.ejemplos_videos.entities.Figurita;
 import com.example.ejemplos_videos.entities.Pais;
 import com.example.ejemplos_videos.entities.Persona;
+import com.example.ejemplos_videos.models.PaisModelo;
 import com.example.ejemplos_videos.models.PersonaModelo;
+import com.example.ejemplos_videos.repositories.IAvatarRepository;
 import com.example.ejemplos_videos.repositories.IPersonaRepository;
 import com.example.ejemplos_videos.services.IPersonaService;
 
@@ -28,6 +31,13 @@ public class PersonaService implements IPersonaService {
 	@Autowired
 	@Qualifier("personaConverter")
 	private PersonaConverter personaConverter;
+	
+	
+	
+	
+	@Autowired
+	@Qualifier("avatarRepository")
+	private IAvatarRepository avatarRepository;
 	
 	@Override
 	public List<Persona> getAll(){	
@@ -45,7 +55,52 @@ public class PersonaService implements IPersonaService {
 	};
 	
 	
+	public PersonaModelo traerPersonaCompletaPorId(int id) {
+		
+		List<Persona> listaEntidad = getPersonasCompletas();
+		PersonaModelo personaEncontrada = new PersonaModelo();
+		for (Persona p: listaEntidad) {
+			
+			if(p.getId() == id) {
+				
+				personaEncontrada = personaConverter.entityToModel(p);
+				
+			}
+			
+			
+		}
+		return personaEncontrada;
+	}
 	
+	
+	public List<Persona> getPersonasCompletas(){
+		
+		List<Persona> personas = getAll();
+		
+		for (Persona p: personas) {
+			
+			Avatar avatar = avatarRepository.findById(p.getAvatar().getId());
+			
+			
+			Set<Pais> paises = paisesDeLaPersona(p.getId());
+			Set<Figurita> figuritas = figuritasDeLaPersona(p.getId());
+			
+			if(avatar != null) {
+				p.setAvatar(avatar);
+			}
+			
+			
+			if(paises!=null) {
+			p.setPaises(paises);
+			}
+			
+			if(figuritas!=null) {
+			p.setFiguritas(figuritas);
+			}
+		}
+		
+		return personas;
+	}
 	
 	public List<PersonaModelo> getAllModel(){
 		
@@ -77,10 +132,13 @@ public class PersonaService implements IPersonaService {
 	public Set<Pais> paisesDeLaPersona(int id) {
 		
 		Persona p = personaRepository.findByIdAndFetchPaisesEagerly(id);
-		
+		System.out.println(p);
 		Set<Pais> lista = new HashSet<>();
-		
-		lista = p.getPaises();
+		if (p!=null) {
+			if(p.getPaises()!=null) {
+				lista = p.getPaises();
+			}
+		}
 		return lista;
 	}
 	
@@ -90,11 +148,19 @@ public class PersonaService implements IPersonaService {
 		Persona p = personaRepository.findByIdAndFetchFiguritasEagerly(id);
 		
 		Set<Figurita> lista = new HashSet<>();
-		
-		lista = p.getFiguritas();
-		
+		if (p!=null) {
+			if(p.getFiguritas()!=null) {
+					lista = p.getFiguritas();
+			}
+		}
 		return lista;
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	@Override
@@ -110,6 +176,19 @@ public class PersonaService implements IPersonaService {
 	
 	@Override
 	public boolean remove(int id) {
+		
+		try {
+			personaRepository.deleteById(id);
+			return true;
+		}catch (Exception e) {
+			return false;
+		}
+		
+	}
+
+	
+	@Override
+	public boolean remove(Long id) {
 		
 		try {
 			personaRepository.deleteById(id);

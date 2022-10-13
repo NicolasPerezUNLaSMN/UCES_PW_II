@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="avatar")
 public class Avatar {
@@ -25,6 +27,7 @@ public class Avatar {
 	
 	//Relación no propietaria
 	@OneToOne(mappedBy = "avatar")
+	@JsonIgnore
 	private Persona persona;
 	
 	public int getId() {
@@ -58,8 +61,9 @@ public class Avatar {
 	}
 	@Override
 	public String toString() {
-		return "Avatar [id=" + id + ", email=" + email + ", webPersonal=" + webPersonal + ", imagen=" + imagen
-				+ ", persona=" + persona + "]";
+		return "Avatar [id=" + id + ", email=" + email + ", webPersonal=" + webPersonal + ","
+				+ " imagen=" + imagen
+				;
 	}
 	public String getImagen() {
 		return imagen;

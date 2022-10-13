@@ -19,6 +19,8 @@ public interface IPaisService {
 	public PaisModelo traerPorId(int id);
 	
 	public List<PaisModelo> getAllModel();
+	
+
 
 }
 

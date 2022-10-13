@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.EqualsAndHashCode;
 
 
@@ -39,6 +42,7 @@ public class Pais {
 	
 
 	 @ManyToMany(mappedBy = "paises")
+	 @JsonIgnoreProperties("paises")
 	    public Set<Persona> persona = new HashSet<>();
 	
 
@@ -99,6 +103,11 @@ public class Pais {
 
 	public void setPersona(Set<Persona> persona) {
 		this.persona = persona;
+	}
+
+	@Override
+	public String toString() {
+		return "Pais [id=" + id + ", nombre=" + nombre + ", ranking=" + ranking + "]";
 	}
 	
 

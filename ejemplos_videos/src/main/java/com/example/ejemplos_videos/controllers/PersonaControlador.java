@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -149,12 +150,14 @@ public class PersonaControlador {
 		
 	
 		
-		PersonaModelo persona = personaService.traerPorId(id);
+		PersonaModelo persona = personaService.traerPorId(id); //por defecto traer la persona sin favoritos
 		
 		//Agrego a la lista los paises que ya tenia, esto se puede hacer (MEJOR Aún
 		//en service persona, crear un metodo que me retorne a la personaModelo pero con sus paises
 		//Traigo sus relaciones
 		Set<Pais> paises = personaService.paisesDeLaPersona(id);
+		
+		System.out.println("PAISES: ----> " +paises);
 		
 		if(paises != null) {
 			for (Pais p : paises) {
@@ -211,7 +214,7 @@ public class PersonaControlador {
 			return mV;	
 		}
 	
-		
+	
 		
 	
 	@PostMapping("/nuevapersona")

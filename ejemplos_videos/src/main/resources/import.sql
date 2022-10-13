@@ -52,3 +52,15 @@ INSERT INTO `figurita` (`descripcion`, `numero`, `persona_id`) VALUES ('Gutierre
 INSERT INTO `figurita` (`descripcion`, `numero`, `persona_id`) VALUES ('Martinez', '1', '1');
 INSERT INTO `figurita` (`descripcion`, `numero`, `persona_id`) VALUES ('Otamendi', '2', '1');
 INSERT INTO `figurita` (`descripcion`, `numero`, `persona_id`) VALUES ('Ronaldo', '44', '1');
+INSERT INTO `figurita` (`descripcion`, `numero`, `persona_id`) VALUES ('Otamendi', '2', '2');
+INSERT INTO `figurita` (`descripcion`, `numero`, `persona_id`) VALUES ('Ronaldo', '44', '2');
+INSERT INTO `figurita` (`descripcion`, `numero`, `persona_id`) VALUES ('Gutierrez', '101', '1');
+INSERT INTO `figurita` (`descripcion`, `numero`, `persona_id`) VALUES ('Martinez', '1', '1');
+INSERT INTO `figurita` (`descripcion`, `numero`, `persona_id`) VALUES ('Otamendi', '2', '1');
+
+
+INSERT INTO `persona_pais` (`persona_id`, `pais_id`) VALUES ('1', '2');
+INSERT INTO `persona_pais` (`persona_id`, `pais_id`) VALUES ('1', '3');
+INSERT INTO `persona_pais` (`persona_id`, `pais_id`) VALUES ('1', '4');
+INSERT INTO `persona_pais` (`persona_id`, `pais_id`) VALUES ('2', '2');
+INSERT INTO `persona_pais` (`persona_id`, `pais_id`) VALUES ('2', '1');

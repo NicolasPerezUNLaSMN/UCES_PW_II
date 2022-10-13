@@ -36,7 +36,10 @@ public class PersonaModelo {
 	private Set<PaisModelo> paises = new HashSet<>();
 	
 	public PersonaModelo() 
-	{}
+	{
+		super();
+		
+	}
 	
 	
 	public PersonaModelo(String nombre, int edad, float peso) {

@@ -23,6 +23,10 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.EqualsAndHashCode;
 
 
@@ -61,10 +65,12 @@ public class Persona {
 	//Se podria agregar @NotNull si se queire que la relación exista siempre
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "avatar_id", referencedColumnName = "id")
+	@JsonIgnore
 	private Avatar avatar;
 	
 	
 	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private Set<Figurita> figuritas = new HashSet<>();;
 	
 	
@@ -76,6 +82,7 @@ public class Persona {
 	            joinColumns = @JoinColumn(name = "persona_id"),
 	            inverseJoinColumns = @JoinColumn(name = "pais_id")
 	  )
+	 @JsonIgnoreProperties("persona")
 	private Set<Pais> paises = new HashSet<>();
 	 
 
@@ -263,8 +270,7 @@ public class Persona {
 	@Override
 	public String toString() {
 		return "Persona [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", peso=" + peso + ", pais=" + pais
-				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", avatar=" + avatar + ", figuritas="
-				+ figuritas + ", paises=" + paises + "]";
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt;
 	}
 
 

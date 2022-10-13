@@ -19,6 +19,8 @@ public interface IPersonaService {
 	
 	public boolean remove(int id);
 	
+	public boolean remove(Long id);
+	
 	public PersonaModelo traerPorId(int id);
 	
 	public List<PersonaModelo> getAllModel();
@@ -26,6 +28,7 @@ public interface IPersonaService {
 	public Set<Pais> paisesDeLaPersona(int id);
 
 	public Set<Figurita> figuritasDeLaPersona(int id);
+	public List<Persona> getPersonasCompletas();
 }
 
 
