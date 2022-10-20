@@ -83,6 +83,22 @@ public class PersonaControladorRest {
 	}
 	
 	
+	@Operation(summary="Trae persona por id", description = "Trae a la personas con su determinado id y todas sus relaciones Avatar, Figurita, Paises")
+	@GetMapping("/traer/{id}")
+	public ResponseEntity<Object> traerPersona(@PathVariable("id") int id) {
+		
+	
+	    PersonaModelo p = personaService.traerPorId(id);
+	    Object body;
+	    		
+	    if (p == null) {
+	    	body ="No se puedo traer a la persona";
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+	    }
+
+	    return ResponseEntity.status(HttpStatus.OK).body(p);
+	}
+	
 	
 	
 	@Operation(summary="Lista de personas", description = "Devuelve la lista de personas con su avatar, sus figuritas y sus paises candidatos")

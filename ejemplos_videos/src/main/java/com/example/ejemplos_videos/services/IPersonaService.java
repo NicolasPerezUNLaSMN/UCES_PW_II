@@ -29,6 +29,8 @@ public interface IPersonaService {
 
 	public Set<Figurita> figuritasDeLaPersona(int id);
 	public List<Persona> getPersonasCompletas();
+	
+	public PersonaModelo traerPersonaCompletaPorId(int id);
 }
 
 
