@@ -23,56 +23,56 @@ import com.example.ejemplos_videos.services.IFiguritaService;
 
 public class FiguritaControladorTest {
 	
-	@Autowired
-	@Qualifier("figuritaService")
-	private IFiguritaService figuritaService;
-	
-	//FiguritaRepository figuritaRepocitoryMock = Mockito.mock(FiguritaRepository.class);
-	
-	@Autowired
-	FiguritaControladorRest controladorMock = Mockito.mock(FiguritaControladorRest.class);
-	
-	//Antes de cada prueba - Simula la conectividad a la bd
-	@BeforeEach
-	void setUp() {
-		
-		//Respuesta - Mockeado
-		Figurita figuritaMock = new Figurita (1,10,"La de Messi");
-		ResponseEntity<Object> respuesta = ResponseEntity.status(HttpStatus.OK).body(figuritaMock);
-		
-		//Primero instanción los objetos
-		Mockito.when(controladorMock.traerFigurita(1 )).thenReturn(respuesta);
+		@Autowired
+		@Qualifier("figuritaService")
+		private IFiguritaService figuritaService;
 		
 		
-		//Respuesta - Mockeado
-		figuritaMock = null;
-		respuesta = ResponseEntity.status(HttpStatus.NO_CONTENT).body(figuritaMock);
+			
+		@Autowired
+		FiguritaControladorRest controladorMock = Mockito.mock(FiguritaControladorRest.class);
 		
-		//Primero instanción los objetos
-		Mockito.when(controladorMock.traerFigurita(100 )).thenReturn(respuesta);
-	}
-	
-	
-	@Test
-	void traerFigurita() {
+		//Antes de cada prueba - Simula la conectividad a la bd
+		@BeforeEach
+		void setUp() {
+				
+			//Respuesta - Mockeado
+			Figurita figuritaMock = new Figurita (1,10,"La de Messi");
+				ResponseEntity<Object> respuesta = ResponseEntity.status(HttpStatus.OK).body(figuritaMock);
+				
+			//Primero instanción los objetos
+				Mockito.when(controladorMock.traerFigurita(1 )).thenReturn(respuesta);
+				
+				
+			//Respuesta - Mockeado
+			figuritaMock = null;
+				respuesta = ResponseEntity.status(HttpStatus.NO_CONTENT).body(figuritaMock);
+				
+				//Primero instanción los objetos
+				Mockito.when(controladorMock.traerFigurita(100 )).thenReturn(respuesta);
+			}
+			
+			
+			@Test
+			void traerFigurita() {
+				
+				ResponseEntity<Object> respuesta;
+		//		
+				respuesta = controladorMock.traerFigurita(1);
+				
+				Assertions.assertEquals(10,  ((Figurita) (respuesta.getBody())).getNumero());
 		
-		ResponseEntity<Object> respuesta;
-		
-		respuesta = controladorMock.traerFigurita(1);
-		
-		Assertions.assertEquals(10,  ((Figurita) (respuesta.getBody())).getNumero());
-
-	}
-	
-	@Test
-	void traerFiguritaErronea() {
-		
-		ResponseEntity<Object> respuesta;
-		
-		respuesta = controladorMock.traerFigurita(100);
-		
-		Assertions.assertEquals(null,  ((Figurita) (respuesta.getBody())));
-
-	}
+			}
+		//	
+			@Test
+			void traerFiguritaErronea() {
+		//		
+			ResponseEntity<Object> respuesta;
+		//		
+			respuesta = controladorMock.traerFigurita(100);
+		//		
+			Assertions.assertEquals(null,  ((Figurita) (respuesta.getBody())));
+		//
+			}
 	 
 }

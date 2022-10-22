@@ -11,9 +11,9 @@ class EjemplosVideosApplicationTests {
 	@Test
 	void contextLoads() {
 		
-		BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
-		String passEncriptado = "Nykolai3"; //El pass que quieras para el usuario
-		System.out.println("PALABRA: " +passEncriptado +" "+pe.encode(passEncriptado));
-	}
+			BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
+			String passEncriptado = "Nykolai3"; //El pass que quieras para el usuario
+			System.out.println("PALABRA: " +passEncriptado +" "+pe.encode(passEncriptado));
+		}
 
 }

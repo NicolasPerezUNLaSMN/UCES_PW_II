@@ -26,11 +26,7 @@ public class PersonaControladorTest {
 	@Autowired
 	private IPersonaService personaServiceMock = Mockito.mock(IPersonaService.class);
 	
-	@Autowired
-	private IPaisService paisServiceMock= Mockito.mock(IPaisService.class);
 	
-	@Autowired
-	private IAvatarService avatarServiceMock = Mockito.mock(IAvatarService.class);
 	
 	@Autowired
 	private PersonaControlador personaControladorMock = Mockito.mock(PersonaControlador.class);

@@ -1,13 +1,15 @@
 package com.example.ejemplos_videos.models;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
-import com.example.ejemplos_videos.entities.Pais;
+
+
 
 public class PersonaModelo {
 	
@@ -31,6 +33,7 @@ public class PersonaModelo {
 	
 	private AvatarModelo avatar;
 	
+
 
 	
 	private Set<PaisModelo> paises = new HashSet<>();

@@ -288,8 +288,7 @@ public class Persona {
 
 	
 	
-
-
+	
 
 	
 	
