@@ -1,0 +1,22 @@
+{% extends "Aplicacion1/padre.html" %}
+
+
+{% load static %}
+
+        {% block contenido %}
+
+                   
+        {% for p in object_list %}
+               
+                {{ p.nombre }}
+             
+
+                 <a href="{% url 'DetailPersona' p.id %}" >Ver más</a>
+                <a href="{% url 'EditPersona' p.id %}" >Editar</a>
+                 <a href="{% url 'DeletePersona' p.id %}" >Borrar</a>
+
+                    <br>   <br>
+
+        {% endfor %}
+                  
+         {% endblock %}

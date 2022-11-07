@@ -8,11 +8,14 @@ class Persona(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
     edad = models.IntegerField()
-    descriocion = models.TextField()
+    descripcion = models.TextField()
     nacimiento = models.DateField()
     peso = models.FloatField()
     argentino = models.BooleanField()
     foto = models.ImageField()
+    
+    def __str__(self):
+        return f"{self.nombre}---{self.apellido}----{self.edad}"
     
     
 class Mascota(models.Model):

@@ -1,0 +1,17 @@
+{% extends "Aplicacion1/padre.html" %}
+
+
+{% load static %}
+
+        {% block contenido %}
+
+
+          <form method="post">{% csrf_token %}
+
+            ¿¿Estás seguro que deseas borrarlo "{{ object }} ???
+
+            <input type="submit" value="Submit" />
+
+          </form>
+
+         {% endblock %}
